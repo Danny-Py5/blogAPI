@@ -1,0 +1,24 @@
+GET http://localhost:5000/api/v1/posts
+
+### get a post 
+GET http://localhost:5000/api/v1/posts/6794ee1ca460a5080827d8bk
+
+### add a post
+POST  http://localhost:5000/api/v1/posts
+Content-Type: application/json
+
+{
+    "body": "this is the new post body", 
+    "title": "random",
+    "author": "Daniel kemisola"
+}
+
+### update post
+PATCH  http://localhost:5000/api/v1/posts/6794ee1ca460a5080827d8b99
+Content-Type: application/json
+
+{
+    "name": "post name updated",
+    "title": "title updated",
+    "body": ""
+}

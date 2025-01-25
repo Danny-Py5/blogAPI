@@ -1,0 +1,124 @@
+
+*::before, 
+*::after{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+:root{
+    --color: rgb(87, 87, 87);
+    --white: whitesmoke;
+    --primary-color: rgba(0, 110, 110, 0.705);
+
+    --font-size: clamp(1rem, 4vh, 1.2rem);
+
+    --section-padding: 5rem 0 0;
+    --section-padding-top: 5rem;
+    --padding: 1rem;
+    --section-wrapper-padding: .8rem;
+
+    /* width */
+    --wrapper-max-width: 1200px;
+    /* transition and animation */
+    --transition-duration: .25s;
+    --animation-duration: .5s;
+
+    /* gap */
+    --row-gap: 32px;
+    --col-gap: 32px;
+    --gap: 1rem;
+
+    /* margin */
+    --button-margin-top: 24px;
+}
+
+html{
+    font-family: "Font Awesome 6 Free" ;
+    font-family:  system-ui;
+    background-color: #f2f6f9;
+    padding: 0;
+}
+body{
+    color: var(--color);
+    padding-bottom: 0;
+}
+h1{
+    margin-bottom: 1rem;
+}
+
+p, li{
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+}
+p, a, li{
+    font-size: var(--font-size); 
+    color: var(--color);
+    transition: color var(--transition-duration);
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style-type: none;
+}
+a:hover{
+    color: var(--primary-color);
+}
+button{
+    padding: .5rem 1.5rem;
+    border: none;
+    font: inherit;
+    color: var(--primary-color);
+    /* background-color: var(--primary-color); */
+    background-color: #00000000;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+span{
+    color: var(--primary-color);
+}
+main{
+    max-width: 700px;
+    margin: auto;
+}
+.post-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.post-head input{
+    font: inherit;
+    padding: .4rem 1rem;
+    border-radius: 1rem;
+    border: 2px solid rebeccapurple;
+}
+.add{
+    color: white;
+    font-weight: 600;
+    background-color: var(--primary-color);
+}
+.add:hover{
+    box-shadow: 0 5px 5px rgba(187, 187, 187, 0.599);
+}
+.post-cont{
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+.post{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1rem;
+    border-radius: 1rem;
+    background-color: white;
+    transition: var(--transition-duration)
+}
+.post:hover{
+    box-shadow: 0 10px 10px rgba(200, 200, 200, 0.319);
+}
+
+.delete{
+    color: rgba(96, 0, 0, 0.875);
+}
