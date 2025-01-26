@@ -22,3 +22,6 @@ Content-Type: application/json
     "title": "title updated",
     "body": ""
 }
+
+### delete api
+DELETE http://localhost:5000/api/v1/posts

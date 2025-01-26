@@ -26,14 +26,6 @@
                     <button class="delete"><i class="fa-solid fa-trash"></i> Delete</button>
                 </div>
             </div>
-            
-            <div class="post">
-                <h2>10 Tips for Staying Productive</h2>
-                <div class="action">
-                    <button><i class="fa-solid fa-pen"></i> Update</button>
-                    <button class="delete"><i class="fa-solid fa-trash"></i> Delete</button>
-                </div>
-            </div>
 
             <div class="post">
                 <h2>10 Tips for Staying Productive</h2>
@@ -44,5 +36,56 @@
             </div>
         </div>
     </main>
+
+    <script>
+        let id = '6794e84320cd5720cc88d113';
+        
+        function getAllPosts() {
+            return new Promise((resolve, reject)=> {
+                const allPosts = fetch('/api/v1/posts');
+                resolve(allPosts);
+            }).then(allPosts => {
+                return new Promise((resolve, reject) => {
+                    resolve(allPosts.json())
+                })
+            }).then(allPosts => {
+                return allPosts;
+            });
+        };
+
+        (async () => {generatePostHTML( await getAllPosts())})()
+
+        function generatePostHTML(allPosts){
+            let html = '';
+            allPosts.allPosts.forEach(post => {
+                html += `
+                    <div class="post">
+                        <h2>${post.title}</h2>
+                        <p>${post.body} <br>- <i>${post.author}</i></p>
+                        <div class="action">
+                            <button class="update-${post._id}" data-id="${post._id}"><i class="fa-solid fa-pen"></i> Update</button>
+                            <button class="delete delete-${post._id}" data-id="${post._id}"><i class="fa-solid fa-trash"></i> Delete</button>
+                        </div>
+                    </div>
+                  `
+
+                  document.querySelector('.post-cont').innerHTML = html;
+
+                const delButton = document.querySelectorAll('.delete');
+                delButton.forEach(button => {
+                    button.addEventListener('click', async (e) => {
+                        const {id} = e.target.dataset;
+                        const res = await fetch(`/api/v1/posts/${id}`, {
+                            method: 'DELETE'
+                        }) ;
+                        console.log({deletedPost: res});
+                        (async () => {generatePostHTML( await getAllPosts())})()
+                    })
+                });
+            });
+        }
+
+        
+    </script>
 </body>
 </html>
