@@ -14,6 +14,7 @@ const schema = new mongoose.Schema({
     body: {
         required: [true, 'post body must be provided'],
         type: String,
+        trim: true
     },
     timeCreated: {
         default: Date.now,
