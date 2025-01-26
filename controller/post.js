@@ -54,10 +54,21 @@ const updatePost = asyncWrapper( async (req, res, next) => {
     res.status(200).json({updatedPost, success:true})
 });
 
+const deletePost = asyncWrapper( async (req, res, next) => {
+    const { id } = req.params;
+    const deletedPost = await postModel.findOneAndDelete({_id:id});
+    if (!deletedPost){
+        const error = createCustomAPIError(404, `cannot find a post with the id of ${id}`);
+        return next(error);
+    };
+    res.status(200).json({success:true, deletedPost});
+})
+
 
 module.exports = {
     getAllPosts,
     addPost,
     getAPost,
     updatePost,
+    deletePost
 }
